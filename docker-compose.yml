@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+    data-base:
+        build: .
+        ports:
+            - "3306:3306"
+    data-collector:
+        build: .
+    web-app:
+        build: .
+        ports:
+            - "80:80"
+    
