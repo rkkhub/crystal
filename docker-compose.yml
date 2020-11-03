@@ -2,10 +2,24 @@ version: "3.8"
 services:
     data-base:
         build: .
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: mypassword
+            # MYSQL_DATABASE: crystal
+            # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        volumes:
+            - ./data:/var/lib/mysql:rw
+            # - ./data-base/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
         ports:
-            - "3306:3306"
+            - 3306: 3306
     data-collector:
         build: .
+        restart: always
+        environment:
+            DB_USER: mypassword
+            DB_PASS: mypassword
+            DB_SCHEMA: crystal
+            DB_HOST: data-base
     web-app:
         build: .
         ports:

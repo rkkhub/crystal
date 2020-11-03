@@ -1,0 +1,61 @@
+Schema: crystal
+    - historical_data
+    - news
+    - metadata_stock
+    - indices
+    - futures_index
+    - futures_nifty
+    - calander_earnings
+    - fii
+    - dii
+
+
+TABLE | equity_historical
+-----------------------
+id
+date                        [date]
+exchange
+symbol                      [varchar]
+series                      [varchar]
+close_pre
+open
+high
+low
+last
+close
+vwap
+volume
+turnover
+trades
+volume_deliverable
+volume_deliverable_perct
+
+TABLE | index_historical
+---------------
+id
+date
+symbol
+open
+high
+low
+close
+turnover
+
+TABLE | news
+------------
+id
+datetime
+source
+title
+description
+link
+link_image
+
+TABLE | symbol_metadata
+-----------------------
+id
+type - index, equity 
+symbol
+name - company
+sector 
+futures - boolean
